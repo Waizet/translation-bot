@@ -1,0 +1,16 @@
+import logging
+from telegram.ext import Application, CommandHandler
+
+TOKEN = "7633931968:AAGQkVmPC9rBNes65CyRoBIU8MR1OTEJF3Y"
+
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", 
+    level=logging.INFO
+)
+
+async def start(update, context):
+    await update.message.reply_text("Бот работает!")
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler("start", start))
+app.run_polling()
